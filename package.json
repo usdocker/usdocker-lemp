@@ -1,0 +1,28 @@
+{
+  "name": "usdocker-lemp",
+  "version": "1.0.0",
+  "description": "USDocker script for create a LEMP server in seconds. ",
+  "main": "usdocker_lemp.js",
+  "scripts": {
+    "test": "./node_modules/.bin/eslint *.js",
+    "postinstall": "./node_modules/.bin/usdocker -rv"
+  },
+  "keywords": [
+    "usdocker",
+    "lemp"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/usdocker/usdocker-lemp.git"
+  },
+  "author": "joao@byjg.com.br",
+  "license": "MIT",
+  "dependencies": {
+    "targz": "^1.0.1",
+    "usdocker-mysql": "^1.0.*",
+    "usdocker": "^1.0.*"
+  },
+  "devDependencies": {
+    "eslint": "^4.4.1"
+  }
+}
