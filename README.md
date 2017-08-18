@@ -96,7 +96,7 @@ usdocker lemp --set variable=value
 Default values
 
  - image: "byjg/php7-fpm-nginx:alpine",
- - folder: "/home/jg/.usdocker/data/lemp",
+ - folder: "$HOME/.usdocker/data/lemp",
  - port: 80,
  - sslPort: 443,
  - applicationEnv: "dev" (will set APPLICATION_ENV environment variable to PHP)
