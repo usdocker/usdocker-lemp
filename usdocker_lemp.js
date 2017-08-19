@@ -10,12 +10,13 @@ const SCRIPTNAME = 'lemp';
 
 let config = usdocker.config(SCRIPTNAME);
 let configGlobal = usdocker.configGlobal();
+const CONTAINERNAME = SCRIPTNAME + configGlobal.get('container-suffix');
 
 function getContainerDef() {
 
     let docker = usdocker.dockerRunWrapper(configGlobal);
     return docker
-        .containerName(SCRIPTNAME + configGlobal.get('container-suffix'))
+        .containerName(CONTAINERNAME)
         .port(config.get('port'), 80)
         .port(config.get('sslPort'), 443)
         .volume(config.get('folder') + '/sites', '/srv/web')
@@ -122,20 +123,20 @@ module.exports = {
 
     up: function(callback)
     {
-        usdocker.up(SCRIPTNAME, getContainerDef(), callback);
+        usdocker.up(CONTAINERNAME, getContainerDef(), callback);
     },
 
     status: function(callback) {
-        usdocker.status(SCRIPTNAME, callback);
+        usdocker.status(CONTAINERNAME, callback);
     },
 
     down: function(callback)
     {
-        usdocker.down(SCRIPTNAME, callback);
+        usdocker.down(CONTAINERNAME, callback);
     },
 
     restart: function(callback)
     {
-        usdocker.restart(SCRIPTNAME, getContainerDef(), callback);
+        usdocker.restart(CONTAINERNAME, getContainerDef(), callback);
     }
 };
