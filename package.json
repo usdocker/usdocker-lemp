@@ -5,6 +5,7 @@
   "main": "usdocker_lemp.js",
   "scripts": {
     "test": "./node_modules/.bin/eslint *.js",
+    "preinstall": "npm i -g usdocker usdocker-mysql",
     "postinstall": "./node_modules/.bin/usdocker -rv"
   },
   "keywords": [
@@ -18,9 +19,7 @@
   "author": "joao@byjg.com.br",
   "license": "MIT",
   "dependencies": {
-    "targz": "^1.0.1",
-    "usdocker": "^1.0.4",
-    "usdocker-mysql": "^1.0.2"
+    "targz": "^1.0.1"
   },
   "devDependencies": {
     "eslint": "^4.5.0"
