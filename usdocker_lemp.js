@@ -19,10 +19,10 @@ function getContainerDef() {
         .containerName(CONTAINERNAME)
         .port(config.get('port'), 80)
         .port(config.get('sslPort'), 443)
-        .volume(config.get('folder') + '/sites', '/srv/web')
-        .volume(config.getUserDir('fpm') + '/fpmpool/zz-docker-2.conf', '/usr/local/etc/php-fpm.d/zz-docker-2.conf')
-        .volume(config.getUserDir('fpm') + '/php/custom.ini', '/usr/local/etc/php/conf.d/custom.ini')
-        .volume(config.getUserDir('nginx') + '/conf.d', '/etc/nginx/conf.d/')
+        .volume(path.join(config.get('folder'), 'sites'), '/srv/web')
+        .volume(path.join(config.getUserDir('fpm'), 'fpmpool', 'zz-docker-2.conf'), '/usr/local/etc/php-fpm.d/zz-docker-2.conf')
+        .volume(path.join(config.getUserDir('fpm'), 'php', 'custom.ini'), '/usr/local/etc/php/conf.d/custom.ini')
+        .volume(path.join(config.getUserDir('nginx'), 'conf.d'), '/etc/nginx/conf.d/')
         .env('LEMP_DATA_FOLDER', config.get('folder'))
         .env('LEMP_PORT', config.get('port'))
         .env('LEMP_SSL_PORT', config.get('sslPort'))
@@ -43,10 +43,10 @@ module.exports = {
         config.setEmpty('sslPort', 443);
         config.setEmpty('applicationEnv', 'dev');
 
-        config.copyToUserDir(__dirname + '/lemp/conf/fpm');
-        config.copyToUserDir(__dirname + '/lemp/conf/nginx');
+        config.copyToUserDir(path.join(__dirname, 'lemp', 'conf', 'fpm'));
+        config.copyToUserDir(path.join(__dirname, 'lemp', 'conf', 'nginx'));
 
-        config.copyToDataDir(__dirname + '/lemp/sites');
+        config.copyToDataDir(path.join(__dirname, 'lemp', 'sites'));
 
         callback(null, 'setup loaded for ' + SCRIPTNAME);
     },
