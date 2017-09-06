@@ -1,12 +1,11 @@
 {
-  "name": "usdocker-lemp",
+  "name": "@usdocker/lemp",
   "version": "1.0.4",
   "description": "USDocker script for create a LEMP server in seconds. ",
   "main": "usdocker_lemp.js",
   "scripts": {
     "test": "./node_modules/.bin/eslint *.js",
-    "preinstall": "npm i -g usdocker usdocker-mysql",
-    "postinstall": "./node_modules/.bin/usdocker -rv"
+    "postinstall": "usdocker -rv"
   },
   "keywords": [
     "usdocker",
