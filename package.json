@@ -21,6 +21,6 @@
     "targz": "^1.0.1"
   },
   "devDependencies": {
-    "eslint": "^4.5.0"
+    "eslint": "^4.6.1"
   }
 }

@@ -14,7 +14,8 @@ $HOME/.usdocker/data/lemp/sites
 ## Installing
 
 ```bash
-npm install -g @usdocker/usdocker @usdocker/mysql @usdocker/lemp
+npm install -g @usdocker/usdocker # Install it first
+npm install -g @usdocker/mysql @usdocker/lemp
 ```
 
 ## Running
