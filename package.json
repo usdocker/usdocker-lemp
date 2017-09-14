@@ -1,6 +1,6 @@
 {
   "name": "@usdocker/lemp",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "USDocker script for create a LEMP server in seconds. ",
   "main": "usdocker_lemp.js",
   "scripts": {
