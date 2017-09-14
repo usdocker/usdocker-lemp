@@ -4,8 +4,7 @@
   "description": "USDocker script for create a LEMP server in seconds. ",
   "main": "usdocker_lemp.js",
   "scripts": {
-    "test": "./node_modules/.bin/eslint *.js",
-    "postinstall": "usdocker -rv"
+    "test": "./node_modules/.bin/eslint *.js"
   },
   "keywords": [
     "usdocker",

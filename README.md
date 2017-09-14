@@ -16,6 +16,7 @@ $HOME/.usdocker/data/lemp/sites
 ```bash
 npm install -g @usdocker/usdocker # Install it first
 npm install -g @usdocker/mysql @usdocker/lemp
+usdocker -r    # Update USDocker database
 ```
 
 ## Running
