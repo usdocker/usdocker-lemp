@@ -93,6 +93,12 @@ usdocker lemp domain-list
 usdocker lemp export [domain] [dest folder]
 ```
 
+## Windows Know Problems
+
+**Q: I am getting no error but the service is not started OR I am getting the error: "docker error userland proxy: Bind for 0.0.0.0:80: unexpected error Permission denied. windows"**
+
+A: This error occured because the port 80 is already binded. Try to Shutdown the Skype and/or stop the "World Wide Web Service" (`net stop http`)
+
 ## Customize your Service
 
 You can setup the variables by using:
