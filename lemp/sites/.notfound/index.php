@@ -29,7 +29,13 @@
             and then add some stuff in the folder:
             <br/>
             <code>
-                <?php echo $_ENV['LEMP_DATA_FOLDER'] . '/' . $_SERVER['X_Lemp_Domain']; ?>
+                <?php echo $_ENV['LEMP_DATA_FOLDER'] . '/sites/' . $_SERVER['X_Lemp_Domain']; ?>
+            </code>
+            <br/>
+            A list of available sites can be obtained using:
+            <br/>
+            <code>
+            usdocker lemp domain-list
             </code>
         </div>
     </body>

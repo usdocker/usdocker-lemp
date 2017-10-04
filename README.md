@@ -87,6 +87,12 @@ usdocker lemp domain-del example.com
 usdocker lemp domain-list
 ```
 
+### Export/backup domains
+
+```bash
+usdocker lemp export [domain] [dest folder]
+```
+
 ## Customize your Service
 
 You can setup the variables by using:
