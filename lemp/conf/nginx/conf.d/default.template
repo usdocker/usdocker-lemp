@@ -51,11 +51,13 @@ server {
   client_max_body_size 20M;
 
   location / {
-    try_files $uri $uri/ /app.php /index.php /index.html =404;
+    # Does not change /app.php;
+    # It will replaced by "phpHandler" usdocker lemp config;
+    try_files $uri $uri/ /app.php;
   }
 
   # Exclude Static files
-  location ~ "\.(css|jpg|jpeg|ogg|png|gif|mp3|mp4|mpeg|mpg|avi|txt|md|json|js|ico)$" {
+  location ~ "\.(?!php)([0-9a-zA-Z]{1,10})$" {
     try_files $uri =404;
   }
 

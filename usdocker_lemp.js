@@ -14,6 +14,14 @@ const CONTAINERNAME = SCRIPTNAME + configGlobal.get('container-suffix');
 
 function getContainerDef() {
 
+    let checkFolder = path.join(config.getUserDir('nginx'), 'conf.d');
+    let template = path.join(checkFolder, 'default.template');
+    if (fs.existsSync(template)) {
+        let confFile = path.join(checkFolder, 'default.conf');
+        let newConf = fs.readFileSync(template).toString().replace('/app.php;',  config.get('phpHandler') + ';');
+        fs.writeFileSync(confFile, newConf);
+    }
+
     let docker = usdocker.dockerRunWrapper(configGlobal);
     return docker
         .containerName(CONTAINERNAME)
@@ -42,6 +50,7 @@ module.exports = {
         config.setEmpty('port', 80);
         config.setEmpty('sslPort', 443);
         config.setEmpty('applicationEnv', 'dev');
+        config.setEmpty('phpHandler', '/app.php');
 
         config.copyToUserDir(path.join(__dirname, 'lemp', 'conf', 'fpm'));
         config.copyToUserDir(path.join(__dirname, 'lemp', 'conf', 'nginx'));
