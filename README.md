@@ -115,5 +115,7 @@ Default values
  - sslPort: 443,
  - applicationEnv: "dev" (will set APPLICATION_ENV environment variable to PHP)
  - phpHandler: "/app.php"  (you can change to another or =404 for ignore phpHandler)
-
-
+ - enableCors: 'true'
+ - corsAllowOrigin: '*';
+ - nginxDebugHeader: 'true'
+ - phpDebugHeader: 'true'

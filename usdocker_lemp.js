@@ -13,12 +13,25 @@ let configGlobal = usdocker.configGlobal();
 const CONTAINERNAME = SCRIPTNAME + configGlobal.get('container-suffix');
 
 function getContainerDef() {
-
     let checkFolder = path.join(config.getUserDir('nginx'), 'conf.d');
     let template = path.join(checkFolder, 'default.template');
     if (fs.existsSync(template)) {
         let confFile = path.join(checkFolder, 'default.conf');
         let newConf = fs.readFileSync(template).toString().replace('/app.php;',  config.get('phpHandler') + ';');
+        newConf = newConf.replace(/\n/g, '@#@#');
+        if (config.get('enableCors') !== 'true') {
+            newConf = newConf.replace(/##-CORS-START(.*?)##-CORS-END/g, '');
+        } else {
+            console.log(config.get('corsAllowOrigin'));
+            newConf = newConf.replace(/##_ORIGIN_##/g, config.get('corsAllowOrigin'));
+        }
+        if (config.get('nginxDebugHeader') !== 'true') {
+            newConf = newConf.replace(/##-NGINXDEBUG-START(.*?)##-NGINXDEBUG-END/g, '');
+        }
+        if (config.get('phpDebugHeader') !== 'true') {
+            newConf = newConf.replace(/##-PHPDEBUG-START(.*?)##-PHPDEBUG-END/g, '');
+        }
+        newConf = newConf.replace(/@#@#/g, '\n');
         fs.writeFileSync(confFile, newConf);
     }
 
@@ -51,6 +64,10 @@ module.exports = {
         config.setEmpty('sslPort', 443);
         config.setEmpty('applicationEnv', 'dev');
         config.setEmpty('phpHandler', '/app.php');
+        config.setEmpty('enableCors', 'true');
+        config.setEmpty('corsAllowOrigin', '*');
+        config.setEmpty('nginxDebugHeader', 'true');
+        config.setEmpty('phpDebugHeader', 'true');
 
         config.copyToUserDir(path.join(__dirname, 'lemp', 'conf', 'fpm'));
         config.copyToUserDir(path.join(__dirname, 'lemp', 'conf', 'nginx'));
