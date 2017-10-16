@@ -22,7 +22,6 @@ function getContainerDef() {
         if (config.get('enableCors') !== 'true') {
             newConf = newConf.replace(/##-CORS-START(.*?)##-CORS-END/g, '');
         } else {
-            console.log(config.get('corsAllowOrigin'));
             newConf = newConf.replace(/##_ORIGIN_##/g, config.get('corsAllowOrigin'));
         }
         if (config.get('nginxDebugHeader') !== 'true') {
