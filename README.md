@@ -109,7 +109,7 @@ usdocker lemp --set variable=value
 
 Default values
 
- - image: "byjg/php7-fpm-nginx:alpine",
+ - image: "byjg/php:7-fpm-nginx",
  - folder: "$HOME/.usdocker/data/lemp",
  - port: 80,
  - sslPort: 443,

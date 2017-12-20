@@ -57,7 +57,7 @@ function getContainerDef() {
 module.exports = {
     setup: function(callback)
     {
-        config.setEmpty('image', 'byjg/php7-fpm-nginx:alpine');
+        config.setEmpty('image', 'byjg/php:7-fpm-nginx');
         config.setEmpty('folder', config.getDataDir());
         config.setEmpty('port', 80);
         config.setEmpty('sslPort', 443);
